@@ -1,0 +1,44 @@
+@import "src/styles.scss";
+
+#main-container {
+  display: flex;
+  height: $footer-header-height;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 2em;
+}
+
+#title {
+  font-size: 2em;
+  margin-left: 1em;
+  color: #575757;
+}
+
+#button-bloc {
+  display: flex;
+  flex-direction: row;
+}
+
+#logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.button{
+  background-color: $color-secondary;
+  color: $color-font-secondary;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
+img {
+  height: $footer-header-height;
+  justify-content: center;
+}

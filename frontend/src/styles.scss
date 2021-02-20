@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background-color: #FFFFFF;
+}
+/**
+Color
+ */
+$color-primary: #2A4D69;
+$color-secondary: #c0c8d9;
+$color-accent: #2a3c69;
+$color-highlight: #283655;
+
+$color-font-primary: #c0c8d9;
+$color-font-secondary: #2A4D69;
+
+$color-red: #DB6957;
+$color-green: #BBE3BC;
+
+/**
+Font
+ */
+
+
+/**
+size
+ */
+
+$footer-header-height: 5em;

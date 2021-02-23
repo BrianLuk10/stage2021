@@ -25,6 +25,7 @@ Articles.findById = (Id, result) => {
     });
 };
 
+
 Articles.getAll = result => {
     sql.query("SELECT * FROM articles", (err, res) => {
         if (err) {

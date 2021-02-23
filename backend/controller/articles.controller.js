@@ -8,6 +8,9 @@ exports.findAll = (req, res) => {
                     err.message || "Some error occurred while retrieving articles."
             });
         else
+            for(let i=0; i < data.length; i++){
+                data[i].photo = data[i].photo.toString("base64")
+            }
             res.send(data);
     });
 };
@@ -29,7 +32,7 @@ exports.findOne = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    Artcles.remove(req.params.id, (err, data) => {
+    Articles.remove(req.params.id, (err, data) => {
         if (err) {
             if (err.kind === "not_found") {
                 res.status(404).send(

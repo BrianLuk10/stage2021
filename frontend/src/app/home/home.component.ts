@@ -7,19 +7,20 @@ import {GetHomeService} from "./home.service";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
+
 export class HomeComponent implements OnInit {
 
-  liste: Array<any>;
+  liste: any;
+  test: any;
 
   constructor( private http: HttpClient,
                private api: GetHomeService) { }
 
   ngOnInit(): void {
     this.api.listeArticleCall().subscribe((res) => {
-      this.liste = res[Object.keys(res)[2]];
-      console.log(res);
+      this.liste = res;
     });
-
   }
 
 }

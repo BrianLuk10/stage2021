@@ -27,6 +27,8 @@ app.get("/", (req, res) => {
 });
 
 require("./routes/articles.route.js")(app);
+require("./routes/categories.route.js")(app);
+
 
 // set port, listen for requests
 app.listen(8080, () => {

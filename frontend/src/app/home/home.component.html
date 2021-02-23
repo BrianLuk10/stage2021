@@ -8,6 +8,30 @@
     </p>
   </div>
 </div>
-
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>Titre</th>
+      <th>Catégorie</th>
+      <th>Prix TTC</th>
+      <th>Quantité</th>
+      <th>Prix Total</th>
+      <th>Argent récolté</th>
+      <th>Photo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let listes of liste">
+      <td *ngIf="listes.don <= listes.prixTotal"> {{listes.titre}}</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.catId }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prix | number : '1.2-2'}}  €</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.quantite }} </td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.don | number : '1.2-2'}} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal" style="width: 250px; height: 250px;text-align:center; vertical-align:middle">
+        <img src="data:image/PNG;base64,{{listes.photo}}" style="max-height:100%; max-width:100%"/></td>
+    </tr>
+    </tbody>
+  </table>
 
 

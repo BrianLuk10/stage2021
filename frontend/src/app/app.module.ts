@@ -9,11 +9,13 @@ import { HeaderComponent } from './header/header.component';
 import {RouterModule,Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {GetHomeService} from "./home/home.service";
+import { ArticlesComponent } from './articles/articles.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '404', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent},
+  {path: '404', redirectTo: '', pathMatch: 'full'},
+  {path: 'articles/:id', component:ArticlesComponent},
+  {path: '**', redirectTo: ''},
 
 ];
 
@@ -23,7 +25,8 @@ const routes: Routes = [
     AppComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ArticlesComponent
   ],
   imports: [
     BrowserModule,

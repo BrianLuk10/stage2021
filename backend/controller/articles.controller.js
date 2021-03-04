@@ -27,7 +27,9 @@ exports.findOne = (req, res) => {
                     message: "Error retrieving Articles with id " + req.params.id
                 });
             }
-        } else res.send(data);
+        } else
+            data.photo = data.photo.toString("base64");
+            res.send(data);
     });
 };
 

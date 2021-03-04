@@ -28,8 +28,10 @@
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal" style="width: 250px; height: 250px;text-align:center; vertical-align:middle">
-        <img src="data:image/PNG;base64,{{listes.photo}}" style="max-height:100%; max-width:100%"/></td>
+      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+
+<!--      <td *ngIf="listes.don <= listes.prixTotal" style="width: 250px; height: 250px;text-align:center; vertical-align:middle">
+        <img src="data:image/PNG;base64,{{listes.photo}}" style="max-height:100%; max-width:100%"/></td>-->
     </tr>
     </tbody>
   </table>

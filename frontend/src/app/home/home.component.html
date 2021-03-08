@@ -8,6 +8,21 @@
     </p>
   </div>
 </div>
+
+<div class="container-fluid">
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <button type="button" class="btn btn-secondary" (click)="filtre = 'tout'; page = 1">Tout</button>
+    <button type="button" class="btn btn-secondary" (click)="filtre = '+';">les plus cher</button>
+    <button type="button" class="btn btn-secondary" (click)="filtre = '-';">les moins cher</button>
+    <button type="button" class="btn btn-secondary" (click)="filtre = 'cuisine'; page = 1">cuisine</button>
+    <button type="button" class="btn btn-secondary" (click)="filtre = 'isotherme'; page = 1">équipement isothermique</button>
+    <button type="button" class="btn btn-secondary" (click)="filtre = 'hotte'; page = 1">hottes</button>
+    <button type="button" class="btn btn-secondary" (click)="filtre = 'frigorifique'; page = 1">système frigorifique</button>
+    <button type="button" class="btn btn-secondary" (click)="filtre = 'locaux'; page = 1">locaux commun</button>
+  </div>
+</div>
+
+
   <table class="table table-hover">
     <thead class="thead-dark">
     <tr>
@@ -20,20 +35,103 @@
       <th>Photo</th>
     </tr>
     </thead>
-    <tbody>
-    <tr *ngFor="let listes of liste">
+    <tbody *ngIf="filtre === 'tout'">
+    <tr *ngFor="let listes of liste| paginate: { itemsPerPage: 10, currentPage: page };index as i">
       <td *ngIf="listes.don <= listes.prixTotal"> {{listes.titre}}</td>
-      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.catId }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.categorie }}</td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prix | number : '1.2-2'}}  €</td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.don | number : '1.2-2'}} €</td>
       <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+    </tr>
+    </tbody>
 
-<!--      <td *ngIf="listes.don <= listes.prixTotal" style="width: 250px; height: 250px;text-align:center; vertical-align:middle">
-        <img src="data:image/PNG;base64,{{listes.photo}}" style="max-height:100%; max-width:100%"/></td>-->
+    <tbody *ngIf="filtre === '+'">
+    <tr *ngFor="let listes of plusCher| paginate: { itemsPerPage: 10, currentPage: page };index as i">
+      <td *ngIf="listes.don <= listes.prixTotal"> {{listes.titre}}</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.categorie }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prix | number : '1.2-2'}}  €</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.quantite }} </td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.don | number : '1.2-2'}} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+    </tr>
+    </tbody>
+
+    <tbody *ngIf="filtre === '-'">
+    <tr *ngFor="let listes of moinsCher| paginate: { itemsPerPage: 10, currentPage: page };index as i">
+      <td *ngIf="listes.don <= listes.prixTotal"> {{listes.titre}}</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.categorie }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prix | number : '1.2-2'}}  €</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.quantite }} </td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.don | number : '1.2-2'}} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+    </tr>
+    </tbody>
+
+    <tbody *ngIf="filtre === 'cuisine'">
+    <tr *ngFor="let listes of cuisine| paginate: { itemsPerPage: 10, currentPage: page };index as i">
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{listes.titre}}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{ listes.categorie }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{ listes.prix | number : '1.2-2'}}  €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{ listes.quantite }} </td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{ listes.don | number : '1.2-2'}} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+    </tr>
+    </tbody>
+
+    <tbody *ngIf="filtre === 'isotherme'">
+    <tr *ngFor="let listes of isotherme| paginate: { itemsPerPage: 10, currentPage: page };index as i">
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{listes.titre}}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{ listes.categorie }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{ listes.prix | number : '1.2-2'}}  €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{ listes.quantite }} </td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{ listes.don | number : '1.2-2'}} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+    </tr>
+    </tbody>
+
+    <tbody *ngIf="filtre === 'hotte'">
+    <tr *ngFor="let listes of hotte| paginate: { itemsPerPage: 10, currentPage: page };index as i">
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{listes.titre}}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{ listes.categorie }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{ listes.prix | number : '1.2-2'}}  €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{ listes.quantite }} </td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{ listes.don | number : '1.2-2'}} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+    </tr>
+    </tbody>
+
+    <tbody *ngIf="filtre === 'frigorifique'">
+    <tr *ngFor="let listes of frigorifique| paginate: { itemsPerPage: 10, currentPage: page };index as i">
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{listes.titre}}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{ listes.categorie }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{ listes.prix | number : '1.2-2'}}  €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{ listes.quantite }} </td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{ listes.don | number : '1.2-2'}} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+    </tr>
+    </tbody>
+
+    <tbody *ngIf="filtre === 'locaux'">
+    <tr *ngFor="let listes of locaux| paginate: { itemsPerPage: 10, currentPage: page };index as i">
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{listes.titre}}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{ listes.categorie }}</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{ listes.prix | number : '1.2-2'}}  €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{ listes.quantite }} </td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{ listes.don | number : '1.2-2'}} €</td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
     </tr>
     </tbody>
   </table>
+<pagination-controls (pageChange)="page =$event">
+</pagination-controls>
 
 

@@ -25,9 +25,24 @@ Articles.findById = (Id, result) => {
     });
 };
 
+Articles.findByCatId = (Id, result) => {
+    sql.query(`select id, titre, don, categorie, articles.catId, prix, prixTotal, quantite from articles
+     inner join categories on articles.catId = categories.catId WHERE articles.catId = ${Id}`, (err, res) => {
+        if (err) {
+            result(err, null);
+            return;
+        }
+        if (res.length) {
+            result(null, res);
+            return;
+        }
+        result({ kind: "not_found" }, null);
+    });
+};
+
 
 Articles.getAll = result => {
-    sql.query("SELECT * FROM articles", (err, res) => {
+    sql.query("select id, titre, don, categorie, articles.catId, prix, prixTotal, description, quantite from articles inner join categories on articles.catId = categories.catId", (err, res) => {
         if (err) {
             result(null, err);
             return;

@@ -10,6 +10,7 @@ import {RouterModule,Routes} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
 import {GetHomeService} from "./home/home.service";
 import { ArticlesComponent } from './articles/articles.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -34,6 +35,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    NgxPaginationModule,
 
   ],
   providers: [GetHomeService],

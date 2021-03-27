@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {GetHomeService} from "./home.service";
 
@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   ngOnInit(): void {
     this.api.listeArticleCall().subscribe((res) => {
       this.liste = res;
@@ -55,7 +56,6 @@ export class HomeComponent implements OnInit {
       this.moinsCher.sort(function(a, b) {
         return a.prix - b.prix;
       });
-      console.log(this.moinsCher)
     });
 
     this.api.listeArticleCall().subscribe((res) => {
@@ -63,7 +63,6 @@ export class HomeComponent implements OnInit {
       this.plusCher.sort(function(a, b) {
         return b.prix - a.prix;
       });
-      console.log(this.plusCher)
     });
     this.filtre = 'tout';
   }

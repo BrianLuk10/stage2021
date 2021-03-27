@@ -40,6 +40,24 @@ Articles.findByCatId = (Id, result) => {
     });
 };
 
+Articles.updateById = (id, article, result) => {
+    sql.query(
+        "UPDATE articles SET don = ? WHERE cat_id = ?",
+        [ article.don, id],
+        (err, res) => {
+            if (err) {
+                console.log("error: ", err);
+                result(null, err);
+                return;
+            }
+
+
+            console.log("updated article: ", { id: id, ...article });
+            result(null, { id: id, ...article });
+        }
+    );
+};
+
 
 Articles.getAll = result => {
     sql.query("select id, titre, don, categorie, articles.catId, prix, prixTotal, description, quantite from articles inner join categories on articles.catId = categories.catId", (err, res) => {

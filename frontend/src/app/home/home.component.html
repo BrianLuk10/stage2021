@@ -9,6 +9,7 @@
   </div>
 </div>
 
+
 <div class="container-fluid">
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <button type="button" class="btn btn-secondary" (click)="filtre = 'tout'; page = 1">Tout</button>
@@ -32,7 +33,7 @@
       <th>Quantité</th>
       <th>Prix Total</th>
       <th>Argent récolté</th>
-      <th>Photo</th>
+      <th>Détails</th>
     </tr>
     </thead>
     <tbody *ngIf="filtre === 'tout'">
@@ -43,7 +44,8 @@
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détails</button></td>
+
     </tr>
     </tbody>
 
@@ -55,7 +57,7 @@
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détails</button></td>
     </tr>
     </tbody>
 
@@ -67,7 +69,7 @@
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+      <td *ngIf="listes.don <= listes.prixTotal"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détails</button></td>
     </tr>
     </tbody>
 
@@ -79,7 +81,7 @@
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détails</button></td>
     </tr>
     </tbody>
 
@@ -91,7 +93,7 @@
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détails</button></td>
     </tr>
     </tbody>
 
@@ -103,7 +105,7 @@
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détailss</button></td>
     </tr>
     </tbody>
 
@@ -115,7 +117,7 @@
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détails</button></td>
     </tr>
     </tbody>
 
@@ -127,7 +129,7 @@
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{ listes.quantite }} </td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{ listes.prixTotal| number : '1.2-2' }} €</td>
       <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> {{ listes.don | number : '1.2-2'}} €</td>
-      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détail</button></td>
+      <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5"> <button class="btn btn-success" routerLink="articles/{{listes.id}}"> Détails</button></td>
     </tr>
     </tbody>
   </table>

@@ -12,8 +12,17 @@
       <td>{{articles.prix}}</td>
     </tr>
     <tr style="width: 250px; height: 250px;text-align:center; vertical-align:middle">
-      <img src="data:image/PNG;base64,{{articles.photo}}" style="max-height:100%; max-width:100%"/></tr>
+      <img src="data:image/PNG;base64,{{articles.photo}}" style="max-height:100%; max-width:100%"/>
+    </tr>
     </tbody>
   </table>
+
+  <div class="paypal">
+    <label>Veuillez entrez un chiffre pour votre don : </label>
+    <input type="text" id="paypalInput"> €
+  </div>
+  <div #paypalRef></div>
   <button class="btn btn-primary" routerLink="/">Retour à la liste</button>
+
+
 </div>

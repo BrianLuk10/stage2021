@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-articles',
@@ -9,18 +9,73 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ArticlesComponent implements OnInit {
 
-  routeArticle: number;
-  articles: any;
-
   constructor(private route: ActivatedRoute,
               private http: HttpClient) {
   }
 
-  ngOnInit(): void {
-    this.routeArticle = this.route.snapshot.params['id'];
+  routeArticle: number;
+  articles: any;
+  paypalAmount: any;
+
+  @ViewChild('paypalRef', {static: true}) private paypalRef: ElementRef;
+  getValue(){
+    this.paypalAmount = (<HTMLInputElement> document.getElementById('paypalInput')).value;
+  }
+
+  getArticles(){
     this.http.get('http://localhost:8080/articles/' + this.routeArticle).subscribe((res) => {
       this.articles = res;
     });
+  }
+  ngOnInit(): void {
+    this.routeArticle = this.route.snapshot.params['id'];
+    this.getArticles()
+    window.paypal.Buttons(
+      {
+        style: {
+          layout: 'horizontal',
+          color: 'blue',
+          shape: 'rect',
+          label: 'paypal'
+        },
+        
+        createOrder: (data, actions) => {
+          this.getValue();
+          return actions.order.create({
+            purchase_units: [
+              {
+                reference_id: this.articles.id,
+                amount: {
+                  value: this.paypalAmount
+                }
+              }
+            ]
+          });
+        },
+
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+              // Show a success message to the buyer
+              alert('Transaction completed by ' + details.payer.name.given_name + '!');
+              return fetch('http://localhost:8080/dons',
+              {
+                method:'POST',
+                headers: {'content-type':'application/json'},
+                body: JSON.stringify({
+                  dons: details.purchase_units[0].amount.value, 
+                  id: details.purchase_units[0].reference_id
+                })
+              }).then(res=>res.json())
+              .then(res => console.log(res));
+          });
+      },
+
+        onError: error => {
+          console.log(error);
+          alert("Une erreur s'est produite, veuillez recharger la page.")
+        }
+      }
+    ).render(this.paypalRef.nativeElement)
   }
 
 }

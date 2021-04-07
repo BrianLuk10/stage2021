@@ -12,7 +12,7 @@ const Articles = function(articles) {
 };
 
 Articles.findById = (Id, result) => {
-    sql.query(`SELECT * FROM articles WHERE id = ${Id}`, (err, res) => {
+    sql.query(`select id, titre, don, categorie, articles.catId, prix, prixTotal, description, quantite, photo from articles inner join categories on articles.catId = categories.catId where id = ${Id}`, (err, res) => {
         if (err) {
             result(err, null);
             return;
@@ -60,7 +60,7 @@ Articles.updateById = (id, article, result) => {
 
 
 Articles.getAll = result => {
-    sql.query("select id, titre, don, categorie, articles.catId, prix, prixTotal, description, quantite from articles inner join categories on articles.catId = categories.catId", (err, res) => {
+    sql.query("select articles.id, titre, prix, prixTotal, quantite, categorie, photo, SUM(dons.dons) AS don from dons inner join articles on dons.id = articles.id inner join categories on categories.catId = articles.catId group by articles.id", (err, res) => {
         if (err) {
             result(null, err);
             return;

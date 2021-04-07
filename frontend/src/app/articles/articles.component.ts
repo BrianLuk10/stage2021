@@ -56,7 +56,7 @@ export class ArticlesComponent implements OnInit {
         onApprove: function(data, actions) {
           return actions.order.capture().then(function(details) {
               // Show a success message to the buyer
-              alert('Transaction completed by ' + details.payer.name.given_name + '!');
+              alert('Cette transaction a été effectuée par ' + details.payer.name.given_name + '!');
               return fetch('http://localhost:8080/dons',
               {
                 method:'POST',
@@ -65,8 +65,7 @@ export class ArticlesComponent implements OnInit {
                   dons: details.purchase_units[0].amount.value, 
                   id: details.purchase_units[0].reference_id
                 })
-              }).then(res=>res.json())
-              .then(res => console.log(res));
+              })
           });
       },
 

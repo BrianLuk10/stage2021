@@ -1,17 +1,28 @@
+
 <div id="bg-image"></div>
 <div id="main-container">
   <div class="text-bloc text-center">
-    <p class="text">
-      Voiçi une liste d'articles que nous avons besoins pour financer notre projet. <br>
-      Attention, le surplus de don d'un article sera utilisé pour un autre article, l'argent recolté servira uniquement à la réalisation
-      de ce projet.
-    </p>
+    <h1>
+      Donation
+    </h1>
   </div>
+</div>
+
+<div>
+<div class="progression">
+<p><b>{{donAll}}€</b> recoltés sur {{prixAll}}€</p>
+</div>
+<div class="gauge">
+  <div class="gauge__body">
+    <div class="gauge__fill"></div>
+    <div class="gauge__cover"></div>
+  </div>
+</div>
 </div>
 
 
 <div class="container-fluid">
-  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+  <div class="btn-group flex-wrap" role="group" aria-label="Button group with nested dropdown">
     <button type="button" class="btn btn-secondary" (click)="filtre = 'tout'; page = 1">Tout</button>
     <button type="button" class="btn btn-secondary" (click)="filtre = '+';">les plus cher</button>
     <button type="button" class="btn btn-secondary" (click)="filtre = '-';">les moins cher</button>
@@ -23,7 +34,7 @@
   </div>
 </div>
 
-
+<div class="table-responsive"> 
   <table class="table table-hover">
     <thead class="thead-dark">
     <tr>
@@ -133,7 +144,6 @@
     </tr>
     </tbody>
   </table>
+  </div>
 <pagination-controls (pageChange)="page =$event">
 </pagination-controls>
-
-

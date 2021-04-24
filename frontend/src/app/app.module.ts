@@ -11,13 +11,18 @@ import {HttpClientModule} from "@angular/common/http";
 import {GetHomeService} from "./home/home.service";
 import { ArticlesComponent } from './articles/articles.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import { AjoutComponent } from './ajout/ajout.component';
+import { FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
+import { VariablesGlobales } from './variableGlobal';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: '404', redirectTo: '', pathMatch: 'full'},
   {path: 'articles/:id', component:ArticlesComponent},
+  {path: 'ajout', component:AjoutComponent},
   {path: '**', redirectTo: ''},
-
+  
 ];
 
 
@@ -27,7 +32,8 @@ const routes: Routes = [
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    ArticlesComponent
+    ArticlesComponent,
+    AjoutComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +42,11 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule,
 
   ],
-  providers: [GetHomeService],
+  providers: [GetHomeService, VariablesGlobales],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

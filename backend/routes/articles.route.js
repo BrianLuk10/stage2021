@@ -9,4 +9,6 @@ module.exports = app => {
 
     app.delete("/articles/:id", articles.delete);
 
+    app.get("/prix", articles.findPrixAll);
+
 };

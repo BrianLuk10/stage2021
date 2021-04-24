@@ -12,6 +12,18 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.findPrixAll = (req, res) => {
+    Articles.getPrixAll((err, data) => {
+        if (err)
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving articles."
+            });
+        else
+            res.send(data);
+    });
+};
+
 exports.findOne = (req, res) => {
     Articles.findById(req.params.id, (err, data) => {
         if (err) {
@@ -25,10 +37,10 @@ exports.findOne = (req, res) => {
                 });
             }
         } else
-            if(data.photo != null) {
+            if (data.photo != null) {
                 data.photo = data.photo.toString("base64");
             }
-            res.send(data);
+        res.send(data);
     });
 };
 
@@ -45,7 +57,7 @@ exports.findCatOne = (req, res) => {
                 });
             }
         } else
-        res.send(data);
+            res.send(data);
     });
 };
 
@@ -57,7 +69,7 @@ exports.delete = (req, res) => {
                     `Not found Articles with id ${req.params.id}.`
                 );
             } else {
-                res.status(500).send( "Could not delete Articles with id " + req.params.id
+                res.status(500).send("Could not delete Articles with id " + req.params.id
                 );
             }
         } else res.send({ message: `Articles was deleted successfully!` });

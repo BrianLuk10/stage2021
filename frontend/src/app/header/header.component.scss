@@ -6,7 +6,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   padding: 2em;
 }
 
@@ -25,7 +25,6 @@
   }
 }
 
-
 #button-bloc {
   display: flex;
   flex-direction: row;
@@ -39,7 +38,7 @@
   vertical-align: middle;
 }
 
-.button{
+.button {
   background-color: $color-secondary;
   color: $color-font-secondary;
   padding: 0.5em;

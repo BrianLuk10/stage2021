@@ -12,6 +12,7 @@ import {GetHomeService} from "./home.service";
 export class HomeComponent implements OnInit {
 
   liste: any;
+  prix:any;
   collection = [];
   page: number;
   filtre: string;
@@ -53,9 +54,16 @@ function setGaugeValue(gauge, value) {
 
     this.api.listeArticleCall().subscribe((res) => {
       this.liste = res;
-      for(let i=0; i < this.liste.length; i++ ){
-        this.donAll += this.liste[i].don
-        this.prixAll += this.liste[i].prixTotal
+      this.liste.sort(function(a, b) {
+        return b.titre - a.titre;
+      });
+    });
+
+    this.api.listePrixCall().subscribe((res) => {
+      this.prix = res;
+      for(let i=0; i < this.prix.length; i++ ){
+        this.donAll += this.prix[i].don
+        this.prixAll += this.prix[i].prixTotal
       }
       this.pourcentage = Math.round((this.donAll/this.prixAll + Number.EPSILON) * 1000) / 1000
       console.log(this.pourcentage)

@@ -1,16 +1,19 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import {VariablesGlobales} from '../variableGlobal';
 
 @Component({
   selector: 'app-articles',
   templateUrl: './articles.component.html',
-  styleUrls: ['./articles.component.scss']
+  styleUrls: ['./articles.component.scss'],
+  providers: [VariablesGlobales]
 })
 export class ArticlesComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private http: HttpClient) {
+              private http: HttpClient,
+              private param: VariablesGlobales) {
   }
 
   routeArticle: number;
@@ -23,8 +26,9 @@ export class ArticlesComponent implements OnInit {
   }
 
   getArticles(){
-    this.http.get('http://localhost:8080/articles/' + this.routeArticle).subscribe((res) => {
+    this.http.get(this.param.url + '/articles/' + this.routeArticle).subscribe((res) => {
       this.articles = res;
+      
     });
   }
   ngOnInit(): void {

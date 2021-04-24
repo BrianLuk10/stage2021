@@ -1,7 +1,7 @@
 const sql = require("./db.js");
 
 // constructor
-const Articles = function(articles) {
+const Articles = function (articles) {
     this.titre = articles.titre;
     this.description = articles.description;
     this.prix = articles.prix;
@@ -12,7 +12,8 @@ const Articles = function(articles) {
 };
 
 Articles.findById = (Id, result) => {
-    sql.query(`select id, titre, don, categorie, articles.catId, prix, prixTotal, description, quantite, photo from articles inner join categories on articles.catId = categories.catId where id = ${Id}`, (err, res) => {
+    sql.query(`select articles.id, titre, prix, prixTotal, quantite, categorie, photo, SUM(dons.dons) AS don from dons inner join articles
+    on dons.id = articles.id inner join categories on categories.catId = articles.catId where articles.id = ${Id} group by articles.id`, (err, res) => {
         if (err) {
             result(err, null);
             return;
@@ -26,8 +27,9 @@ Articles.findById = (Id, result) => {
 };
 
 Articles.findByCatId = (Id, result) => {
-    sql.query(`select id, titre, don, categorie, articles.catId, prix, prixTotal, quantite from articles
-     inner join categories on articles.catId = categories.catId WHERE articles.catId = ${Id}`, (err, res) => {
+    sql.query(`select articles.id, titre, prix, prixTotal, quantite, categorie, SUM(dons.dons) AS don 
+    from dons inner join articles on dons.id = articles.id inner join categories on categories.catId = articles.catId
+     where articles.catId = ${Id} group by articles.id`, (err, res) => {
         if (err) {
             result(err, null);
             return;
@@ -43,7 +45,7 @@ Articles.findByCatId = (Id, result) => {
 Articles.updateById = (id, article, result) => {
     sql.query(
         "UPDATE articles SET don = ? WHERE cat_id = ?",
-        [ article.don, id],
+        [article.don, id],
         (err, res) => {
             if (err) {
                 console.log("error: ", err);
@@ -60,7 +62,17 @@ Articles.updateById = (id, article, result) => {
 
 
 Articles.getAll = result => {
-    sql.query("select articles.id, titre, prix, prixTotal, quantite, categorie, photo, SUM(dons.dons) AS don from dons inner join articles on dons.id = articles.id inner join categories on categories.catId = articles.catId group by articles.id", (err, res) => {
+    sql.query("select articles.id, titre, prix, prixTotal, quantite, categorie, SUM(dons.dons) AS don from dons inner join articles on dons.id = articles.id inner join categories on categories.catId = articles.catId group by articles.id having SUM(dons.dons) < articles.prixTotal", (err, res) => {
+        if (err) {
+            result(null, err);
+            return;
+        }
+        result(null, res);
+    });
+};
+
+Articles.getPrixAll = result => {
+    sql.query("select prix, prixTotal, SUM(dons.dons) AS don from dons inner join articles on dons.id = articles.id inner join categories on categories.catId = articles.catId group by articles.id", (err, res) => {
         if (err) {
             result(null, err);
             return;

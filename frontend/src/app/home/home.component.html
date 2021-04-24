@@ -77,12 +77,22 @@
   <table class="table table-hover">
     <thead class="thead-dark">
       <tr>
-        <th>Titre</th>
-        <th>Catégorie</th>
-        <th>Prix TTC à l'unité</th>
-        <th>Quantité</th>
-        <th>Prix Total</th>
-        <th>Argent récolté</th>
+        <th (click)="sort('titre')">Titre&nbsp;<i class="fa fa-sort"></i></th>
+        <th (click)="sort('categorie')">
+          Catégorie&nbsp;<i class="fa fa-sort"></i>
+        </th>
+        <th (click)="sort('prix')">
+          Prix TTC/unité&nbsp;<i class="fa fa-sort"></i>
+        </th>
+        <th (click)="sort('quantite')">
+          Quantité&nbsp;<i class="fa fa-sort"></i>
+        </th>
+        <th (click)="sort('prixTotal')">
+          Prix total&nbsp;<i class="fa fa-sort"></i>
+        </th>
+        <th (click)="sort('don')">
+          Argent récolté&nbsp;<i class="fa fa-sort"></i>
+        </th>
         <th>Détails</th>
       </tr>
     </thead>
@@ -90,6 +100,7 @@
       <tr
         *ngFor="
           let listes of liste
+            | orderBy: key:reverse
             | paginate: { itemsPerPage: 10, currentPage: page };
           index as i
         "

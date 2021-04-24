@@ -15,6 +15,7 @@ import { AjoutComponent } from './ajout/ajout.component';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 import { VariablesGlobales } from './variableGlobal';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -44,6 +45,7 @@ const routes: Routes = [
     NgxPaginationModule,
     FormsModule,
     ReactiveFormsModule,
+    Ng2OrderModule,
 
   ],
   providers: [GetHomeService, VariablesGlobales],

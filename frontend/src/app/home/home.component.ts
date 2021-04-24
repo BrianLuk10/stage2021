@@ -86,19 +86,6 @@ setGaugeValue(gaugeElement, this.pourcentage);
     this.api.listeArticleLocaux().subscribe((res) => {
       this.locaux = res;
     });
-    this.api.listeArticleCall().subscribe((res) => {
-      this.moinsCher = res;
-      this.moinsCher.sort(function(a, b) {
-        return a.prix - b.prix;
-      });
-    });
-
-    this.api.listeArticleCall().subscribe((res) => {
-      this.plusCher = res;
-      this.plusCher.sort(function(a, b) {
-        return b.prix - a.prix;
-      });
-    });
     this.filtre = 'tout';
     
   }

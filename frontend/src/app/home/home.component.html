@@ -29,12 +29,6 @@
     >
       Tout
     </button>
-    <button type="button" class="btn btn-secondary" (click)="filtre = '+'">
-      les plus cher
-    </button>
-    <button type="button" class="btn btn-secondary" (click)="filtre = '-'">
-      les moins cher
-    </button>
     <button
       type="button"
       class="btn btn-secondary"
@@ -96,6 +90,7 @@
         <th>Détails</th>
       </tr>
     </thead>
+
     <tbody *ngIf="filtre === 'tout'">
       <tr
         *ngFor="
@@ -123,58 +118,11 @@
       </tr>
     </tbody>
 
-    <tbody *ngIf="filtre === '+'">
-      <tr
-        *ngFor="
-          let listes of plusCher
-            | paginate: { itemsPerPage: 10, currentPage: page };
-          index as i
-        "
-      >
-        <td>{{ listes.titre }}</td>
-        <td>{{ listes.categorie }}</td>
-        <td>{{ listes.prix | number: "1.2-2" }} €</td>
-        <td>{{ listes.quantite }}</td>
-        <td>{{ listes.prixTotal | number: "1.2-2" }} €</td>
-        <td>{{ listes.don | number: "1.2-2" }} €</td>
-        <td>
-          <button
-            class="btn btn-success"
-            routerLink="articles/{{ listes.id }}"
-            skipLocationChange
-          >
-            Détails
-          </button>
-        </td>
-      </tr>
-    </tbody>
-
-    <tbody *ngIf="filtre === '-'">
-      <tr
-        *ngFor="
-          let listes of moinsCher
-            | paginate: { itemsPerPage: 10, currentPage: page };
-          index as i
-        "
-      >
-        <td>{{ listes.titre }}</td>
-        <td>{{ listes.categorie }}</td>
-        <td>{{ listes.prix | number: "1.2-2" }} €</td>
-        <td>{{ listes.quantite }}</td>
-        <td>{{ listes.prixTotal | number: "1.2-2" }} €</td>
-        <td>{{ listes.don | number: "1.2-2" }} €</td>
-        <td>
-          <button class="btn btn-success" routerLink="articles/{{ listes.id }}">
-            Détails
-          </button>
-        </td>
-      </tr>
-    </tbody>
-
     <tbody *ngIf="filtre === 'cuisine'">
       <tr
         *ngFor="
           let listes of cuisine
+            | orderBy: key:reverse
             | paginate: { itemsPerPage: 10, currentPage: page };
           index as i
         "
@@ -194,10 +142,8 @@
         <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1">
           {{ listes.prixTotal | number: "1.2-2" }} €
         </td>
-        <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1">
-          {{ listes.don | number: "1.2-2" }} €
-        </td>
-        <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 1">
+        <td>{{ listes.don | number: "1.2-2" }} €</td>
+        <td>
           <button class="btn btn-success" routerLink="articles/{{ listes.id }}">
             Détails
           </button>

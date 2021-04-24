@@ -12,7 +12,7 @@ const Articles = function (articles) {
 };
 
 Articles.findById = (Id, result) => {
-    sql.query(`select articles.id, titre, prix, prixTotal, quantite, categorie, SUM(dons.dons) AS don from dons inner join articles
+    sql.query(`select articles.id, photo, titre, prix, prixTotal, quantite, categorie, SUM(dons.dons) AS don from dons inner join articles
     on dons.id = articles.id inner join categories on categories.catId = articles.catId where articles.id = ${Id} group by articles.id`, (err, res) => {
         if (err) {
             result(err, null);

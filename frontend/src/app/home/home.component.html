@@ -1,6 +1,41 @@
 <div id="bg-image"></div>
 <div id="main-container"></div>
 
+<div class="jumbotron">
+  <h1 class="display-4">FAIRE UN DON</h1>
+  <div class="lead">
+    <h3><b>Vous souhaitez nous aider financièrement ?</b></h3>
+    <p>Voici les étapes à suivre :<br /></p>
+    <p STYLE="padding:0 0 0 40px;">
+      -> Cliquez sur le bouton vert « + » sous l’onglet « Détails » et vous
+      allez être renvoyé sur la page de l’article.
+    </p>
+    <p STYLE="padding:0 0 0 40px;">
+      -> Ensuite, il vous suffit d’entrer le montant désiré et de suivre la
+      procédure PayPal en cliquant sur le bouton jaune.
+    </p>
+    <p>
+      Pour chaque article, les montants peuvent être changés et le surplus de
+      votre don servira au paiement d’un autre article.
+    </p>
+  </div>
+  <hr class="my-4" />
+  <p>
+    Vos dons sont fiscalement déductibles. De ce fait, vous acceptez de partager
+    vos informations personnelles et vos coordonnées afin de nous permettre
+    d’établir un reçu fiscal. L’association Stëmm vun der Strooss vous garantit
+    que vos données à caractère personnel ne sont transmises à aucun tiers.
+  </p>
+  <p class="lead">
+    <a
+      class="btn btn-primary btn-lg"
+      href="http://stemm.lu/protection-des-donnees-2/"
+      role="button"
+      >En apprendre plus</a
+    >
+  </p>
+</div>
+
 <div>
   <div class="progression">
     <p>
@@ -41,7 +76,7 @@
       class="btn btn-secondary"
       (click)="filtre = 'isotherme'; page = 1"
     >
-      équipement isothermique
+      chambre froide
     </button>
     <button
       type="button"
@@ -55,7 +90,7 @@
       class="btn btn-secondary"
       (click)="filtre = 'frigorifique'; page = 1"
     >
-      système frigorifique
+      froid alimentaire
     </button>
     <button
       type="button"
@@ -112,7 +147,7 @@
             routerLink="articles/{{ listes.id }}"
             skipLocationChange
           >
-            Détails
+            +
           </button>
         </td>
       </tr>
@@ -145,7 +180,7 @@
         <td>{{ listes.don | number: "1.2-2" }} €</td>
         <td>
           <button class="btn btn-success" routerLink="articles/{{ listes.id }}">
-            Détails
+            +
           </button>
         </td>
       </tr>
@@ -179,7 +214,7 @@
         </td>
         <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 2">
           <button class="btn btn-success" routerLink="articles/{{ listes.id }}">
-            Détails
+            +
           </button>
         </td>
       </tr>
@@ -213,7 +248,7 @@
         </td>
         <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 3">
           <button class="btn btn-success" routerLink="articles/{{ listes.id }}">
-            Détailss
+            +s
           </button>
         </td>
       </tr>
@@ -247,7 +282,7 @@
         </td>
         <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 4">
           <button class="btn btn-success" routerLink="articles/{{ listes.id }}">
-            Détails
+            +
           </button>
         </td>
       </tr>
@@ -281,7 +316,7 @@
         </td>
         <td *ngIf="listes.don <= listes.prixTotal && listes.catId == 5">
           <button class="btn btn-success" routerLink="articles/{{ listes.id }}">
-            Détails
+            +
           </button>
         </td>
       </tr>

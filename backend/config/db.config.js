@@ -1,6 +1,6 @@
 module.exports = {
     HOST: "localhost",
-    USER: "root",
-    PASSWORD: "",
-    DB: "stage"
-};
+    USER: "dondbusr",
+    PASSWORD: "IaS+L2wmfAu&+0Pd",
+    DB: "donstemmlu"
+}

@@ -66,7 +66,6 @@ function setGaugeValue(gauge, value) {
         this.prixAll += this.prix[i].prixTotal
       }
       this.pourcentage = Math.round((this.donAll/this.prixAll + Number.EPSILON) * 1000) / 1000
-      console.log(this.pourcentage)
       
 setGaugeValue(gaugeElement, this.pourcentage);
       

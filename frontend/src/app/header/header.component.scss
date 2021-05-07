@@ -10,15 +10,15 @@
   padding: 2em;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 600px) {
   #title {
     font-size: 2em;
-    margin-left: 1em;
+    margin-left: 2em;
     color: #575757;
   }
 }
 
-@media screen and (max-width: 399px) {
+@media screen and (max-width: 600px) {
   #title {
     font-size: 20px;
     color: #575757;

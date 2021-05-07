@@ -38,7 +38,7 @@ export class ArticlesComponent implements OnInit {
       {
         style: {
           layout: 'horizontal',
-          color: 'blue',
+          color: 'gold',
           shape: 'rect',
           label: 'paypal'
         },

@@ -13,8 +13,9 @@
     <!-- Product Pricing -->
     <div class="product-price">
       <span
-        >Prix à l'unité : {{ articles.prix | number: "1.2-2" }}€ / Quantité :
-        {{ articles.quantite }} /  Prix Total : {{ articles.prixTotal | number: "1.2-2" }}€</span
+        >Prix à l'unité : {{ articles.prix | number: "1.2-2" }}€ <br />
+        Quantité : {{ articles.quantite }} <br />
+        Prix Total : {{ articles.prixTotal | number: "1.2-2" }}€</span
       >
       <div class="paypal">
         <label>Veuillez entrez un chiffre pour votre don : </label>
@@ -29,7 +30,7 @@
         €
       </div>
       <div #paypalRef></div>
-      <button class="btn btn-primary" routerLink="/">Retour à la liste</button>
+      <button class="btn btn-info" routerLink="/">Retour à la liste</button>
     </div>
   </div>
 </main>

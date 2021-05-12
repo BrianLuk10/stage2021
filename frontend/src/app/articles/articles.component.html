@@ -17,6 +17,8 @@
         Quantité : {{ articles.quantite }} <br />
         Prix Total : {{ articles.prixTotal | number: "1.2-2" }}€</span
       >
+      <br />
+      Argent récolté : {{ articles.don | number: "1.2-2" }}€
       <div class="paypal">
         <label>Veuillez entrez un chiffre pour votre don : </label>
         <input

@@ -190,6 +190,7 @@
       <tr
         *ngFor="
           let listes of isotherme
+            | orderBy: key:reverse
             | paginate: { itemsPerPage: 10, currentPage: page };
           index as i
         "
@@ -224,6 +225,7 @@
       <tr
         *ngFor="
           let listes of hotte
+            | orderBy: key:reverse
             | paginate: { itemsPerPage: 10, currentPage: page };
           index as i
         "
@@ -258,6 +260,7 @@
       <tr
         *ngFor="
           let listes of frigorifique
+            | orderBy: key:reverse
             | paginate: { itemsPerPage: 10, currentPage: page };
           index as i
         "
@@ -292,6 +295,7 @@
       <tr
         *ngFor="
           let listes of locaux
+            | orderBy: key:reverse
             | paginate: { itemsPerPage: 10, currentPage: page };
           index as i
         "

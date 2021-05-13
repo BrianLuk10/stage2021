@@ -28,6 +28,8 @@ $ node index.js
 
 _ex_ ```http://don.stemm.lu:8080```
 
+En ce qui concerne la base de données, un fichier sql se trouve dans ../stage2021/backend/stage.sql, il suffit d'importer le fichier dans MySQL et de changer le la configuration du connexion à la db dans ../stage/backend/config/db.config.js
+
 **_Note:_** ajouter "ajout" dans l'url pour aller dans la page d'ajout de don pour les articles 
 
 _ex :_ ```http://don.stemm.lu:4200/ajout```

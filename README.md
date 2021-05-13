@@ -26,8 +26,8 @@ $ node index.js
 
 **_Attention:_**  changer l'url dans le fichier ../stage2021/frontend/src/app/variableGlobal.ts qui est actuellement ```http://51.210.42.27:8080``` pour mettre l'adresse où tourne le backend Node JS
 
-_ex_ ```http://don.stem.lu:8080```
+_ex_ ```http://don.stemm.lu:8080```
 
 **_Note:_** ajouter "ajout" dans l'url pour aller dans la page d'ajout de don pour les articles 
 
-_ex :_ ```http://don.stem.lu/ajout```
+_ex :_ ```http://don.stemm.lu:4200/ajout```

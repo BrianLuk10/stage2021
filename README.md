@@ -41,3 +41,14 @@ module.exports = {
 **_Note:_** ajouter "ajout" dans l'url pour aller dans la page d'ajout de don pour les articles 
 
 _ex :_ ```http://don.stemm.lu:4200/ajout```
+
+## Faire tourner le projet en continue 
+
+Installer pm2 dans le root du projet ```sudo npm i -g pm2``` puis lancer les commandes suivantes :
+
+```
+$ cd ../stage2021/frontend
+$ pm2 start ng serve --host 0.0.0.0
+$ cd ../stage2021/backend
+$ pm2 start index.js
+```

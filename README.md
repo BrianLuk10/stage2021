@@ -7,6 +7,7 @@
 * PHPMyAdmin: 4.9.2
 * Apache : 2.4.41
 * PHP : 7.3.12
+* MySQL : Ver 8.0.25 for Linux on x86_64 (MySQL Comunity Server - GLP)
 
 ## Comment démarrer le projet ?
 
